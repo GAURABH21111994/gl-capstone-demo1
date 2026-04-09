@@ -1,0 +1,20 @@
+name: Test and Coverage
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      # Example for a Node/Web project
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Run tests with coverage
+        run: npm test -- --coverage # This generates the 'lcov.info' file
+        
+      - name: Upload to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
