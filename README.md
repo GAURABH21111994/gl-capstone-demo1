@@ -1,1 +1,1 @@
-This is general project
+This is github project
